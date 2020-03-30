@@ -35,6 +35,7 @@ class ButtonDemo extends React.Component {
                             <input 
                                 type = "text"
                                 name = "color"
+                                id = "color"
                                 value = {this.state.color}
                                 onChange = {(event) => this.setState({color: event.target.value})}
                             />
@@ -44,6 +45,7 @@ class ButtonDemo extends React.Component {
                             <input 
                                 type = "text"
                                 name = "bgcolor"
+                                id = "bgcolor"
                                 value = {this.state.backgroundColor}
                                 onChange = {(event) => this.setState({backgroundColor: event.target.value})}
                             />
@@ -53,6 +55,7 @@ class ButtonDemo extends React.Component {
                             <input 
                                 type = "text"
                                 name = "width"
+                                id = "width"
                                 value = {this.state.width}
                                 onChange = {(event) => this.setState({width: event.target.value})}
                             />
@@ -62,6 +65,7 @@ class ButtonDemo extends React.Component {
                             <input 
                                 type = "text"
                                 name = "height"
+                                id = "height"
                                 value = {this.state.height}
                                 onChange = {(event) => this.setState({height: event.target.value})}
                             />
@@ -73,6 +77,7 @@ class ButtonDemo extends React.Component {
                                     rows = "5"
                                     cols = "50"
                                     name = "content"
+                                    id = "content"
                                     value = {this.state.content}
                                     onChange = {(event) => this.setState({content: event.target.value})}>
                                 </textarea>
@@ -83,13 +88,15 @@ class ButtonDemo extends React.Component {
                             <input 
                                 type = "text"
                                 name = "icon"
+                                id = "icon"
                                 value = {this.state.icon}
                                 onChange = {(event) => this.setState({icon: event.target.value})}
                             />
                         </div>
                         <div>
                             <label htmlFor = "icon_position">Icon position </label>
-                            <select 
+                            <select
+                                id = "icon_position"
                                 value={this.state.iconPosition} 
                                 onChange = {(event) => this.setState({iconPosition: event.target.value})}>
                                 <option value="left">Left </option>
