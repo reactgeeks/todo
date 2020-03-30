@@ -83,7 +83,7 @@ class ButtonDemo extends React.Component {
                             <input 
                                 type = "text"
                                 name = "icon"
-                                value = {this.state.height}
+                                value = {this.state.icon}
                                 onChange = {(event) => this.setState({icon: event.target.value})}
                             />
                         </div>
