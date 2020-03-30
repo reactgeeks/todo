@@ -5,12 +5,18 @@ class ButtonDemo extends React.Component {
     constructor() {
         super();
         this.state = {
-            color: "black",
-            backgroundColor: "#c3c3c3",
-            width: 50,
-            height: 25,
-            content: ''
+            color: "",
+            backgroundColor: "",
+            width: null,
+            height: null,
+            content: '',
+            icon : 'FaGithub',
+            iconPosition: 'right',
         }
+    }
+
+    loading = () => {
+        this.setState({icon: '', content: 'Loading....'});
     }
 
     render() {
@@ -52,7 +58,7 @@ class ButtonDemo extends React.Component {
                             />
                         </div>
                         <div>
-                            <label htmlFor = "width">Button height </label>
+                            <label htmlFor = "height">Button height </label>
                             <input 
                                 type = "text"
                                 name = "height"
@@ -61,20 +67,48 @@ class ButtonDemo extends React.Component {
                             />
                         </div>
                         <div>
-                            <label htmlFor = "width">Button content </label>
+                            <label htmlFor = "content">Button content </label>
                             <div>
                                 <textarea
-                                    rows = "10"
-                                    cols = "200"
+                                    rows = "5"
+                                    cols = "50"
                                     name = "content"
                                     value = {this.state.content}
                                     onChange = {(event) => this.setState({content: event.target.value})}>
                                 </textarea>
                             </div>
                         </div>
+                        <div>
+                            <label htmlFor = "icon">Button icon </label>
+                            <input 
+                                type = "text"
+                                name = "icon"
+                                value = {this.state.height}
+                                onChange = {(event) => this.setState({icon: event.target.value})}
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor = "icon_position">Icon position </label>
+                            <select 
+                                value={this.state.iconPosition} 
+                                onChange = {(event) => this.setState({iconPosition: event.target.value})}>
+                                <option value="left">Left </option>
+                                <option value="top">Top </option>
+                                <option selected value="right">Right </option>
+                                <option value="bottom">Bottom </option>
+                            </select>
+                        </div>
                     </div>
                 </form>
-                <Button content = {this.state.content} buttonStyle = {buttonStyle}/>
+
+                <Button
+                    buttonStyle = {buttonStyle}
+                    icon = {this.state.icon}
+                    iconPosition = {this.state.iconPosition}
+                    loading = {this.loading}
+                >
+                    <div>{this.state.content}</div>
+                </Button>
             </React.Fragment>
         );
     }
