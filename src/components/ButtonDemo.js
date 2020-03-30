@@ -74,7 +74,7 @@ class ButtonDemo extends React.Component {
                         </div>
                     </div>
                 </form>
-                <Button content = {this.state.content} buttonStyle = {buttonStyle}/>
+                <Button buttonStyle = {buttonStyle}>{this.state.content}</Button>
             </React.Fragment>
         );
     }
