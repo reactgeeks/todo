@@ -1,31 +1,31 @@
 import React from 'react';
 import * as Fa from 'react-icons/fa';
 
-const Button = (props) => {
-    const Icon = Fa[props.icon];
+const Button = ({icon, iconPosition, buttonStyle, children, loading}) => {
+    const Icon = Fa[icon];
     let iconStyle = {};
-    if(props.iconPosition === "left") {
+    if(iconPosition === "left") {
         iconStyle = {display: 'flex', flexDirection: 'row', alignItems: 'center'}
-    } else if(props.iconPosition === "right") {
+    } else if(iconPosition === "right") {
         iconStyle = {display: 'flex', flexDirection: 'row-reverse', alignItems: 'center'}
-    } else if(props.iconPosition === "top") {
+    } else if(iconPosition === "top") {
         iconStyle = {display: 'flex', flexDirection: 'column', alignItems: 'center'}
     } else {
         iconStyle = {display: 'flex', flexDirection: 'column-reverse', alignItems: 'center'}
     }
 
-    let ButtonStyle=style;
+    /*let ButtonStyle=style;
     if(props.large){
         ButtonStyle={...ButtonStyle,...LargeButton}
     }
     if(props.fullWidth){
         ButtonStyle={...ButtonStyle,...fullWidth}
-    }
+    }*/
 
     return (
-        <button style = {{...props.buttonStyle, ...iconStyle}} onClick = {() => props.loading()}>
+        <button style = {{...buttonStyle, ...iconStyle}} onClick = {() => loading()}>
             {Icon ? <Icon /> : null}
-            {props.children}
+            {children}
         </button>
     )
 }
