@@ -1,51 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as Fa from 'react-icons/fa';
 import styled from 'styled-components'
-
-/*const Button = ({icon, iconPosition, buttonStyle, children, loading}) => {
-    const Icon = Fa[icon];
-    let iconStyle = {};
-    if(iconPosition === "left") {
-        iconStyle = {display: 'flex', flexDirection: 'row', alignItems: 'center'}
-    } else if(iconPosition === "right") {
-        iconStyle = {display: 'flex', flexDirection: 'row-reverse', alignItems: 'center'}
-    } else if(iconPosition === "top") {
-        iconStyle = {display: 'flex', flexDirection: 'column', alignItems: 'center'}
-    } else {
-        iconStyle = {display: 'flex', flexDirection: 'column-reverse', alignItems: 'center'}
-    }
-
-    /*let ButtonStyle=style;
-    if(props.large){
-        ButtonStyle={...ButtonStyle,...LargeButton}
-    }
-    if(props.fullWidth){
-        ButtonStyle={...ButtonStyle,...fullWidth}
-    }*/
-
-/*    return (
-        <button style = {{...buttonStyle, ...iconStyle}} onClick = {() => loading()}>
-            {Icon ? <Icon /> : null}
-            {children}
-        </button>
-    )
-}
-const style ={
-
-    color: "black",
-    backgroundColor: "#c3c3c3",
-    borderRadius: "4px",
-    border: "none",
-    padding: "0.25rem",
-    outline: "none"
-}
-const fullWidth={
-    width:"100%"
-}
-const LargeButton={
-    fontSize:"20px"
-}
-*/
 
 const Button = styled.button`
   background: ${props => props.bg ? props.bg : "#0069D9"};
@@ -65,12 +20,80 @@ const SmallButon = styled(Button)`
     font-size : 0.7em;
 `;
 
-export default (props) => {
-    let RenderButton =  (<Button bg = {props.bg} color = {props.color}>{props.children}</Button>);
-    if(props.size === "lg") {
-        RenderButton = (<LargeButton bg = {props.bg} color = {props.color}>{props.children}</LargeButton>)
-    } else if (props.size === "sm") {
-        RenderButton = (<SmallButon bg = {props.bg} color = {props.color}>{props.children}</SmallButon>)
+const Spinner = () => (
+    <StyledSpinner viewBox="0 0 50 50">
+      <circle
+        className="path"
+        cx="25"
+        cy="25"
+        r="20"
+        fill="none"
+        strokeWidth="2"
+      />
+    </StyledSpinner>
+  );
+  
+const StyledSpinner = styled.svg`
+    animation: rotate 1s linear infinite;
+    width: 20px;
+    height: 20px;
+  
+    & .path {
+      stroke: #fff;
+      stroke-linecap: round;
+      animation: dash 1.5s ease-in-out infinite;
+    }
+  
+    @keyframes rotate {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    @keyframes dash {
+      0% {
+        stroke-dasharray: 1, 150;
+        stroke-dashoffset: 0;
+      }
+      50% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -35;
+      }
+      100% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -124;
+      }
+    }
+  `;
+
+export default ({icon, bg, color, children, size, iconPosition, action}) => {
+    const [isLoading, setLoading] = useState(false);
+  
+    const handleClick = () => setLoading(true);
+
+    const Icon = Fa[icon];
+    let iconStyle = {};
+    
+    if(iconPosition === "left") {
+        iconStyle = {display: 'flex', flexDirection: 'row', alignItems: 'center'}
+    } else if(iconPosition === "right") {
+        iconStyle = {display: 'flex', flexDirection: 'row-reverse', alignItems: 'center'}
+    } else if(iconPosition === "top") {
+        iconStyle = {display: 'flex', flexDirection: 'column', alignItems: 'center'}
+    } else {
+        iconStyle = {display: 'flex', flexDirection: 'column-reverse', alignItems: 'center'}
+    }
+
+    let RenderButton =  (<Button style={iconStyle} bg = {bg} color = {color} onClick={handleClick}>
+                            {isLoading ? action === 'text' ? 'Loading...' : <Spinner /> : Icon ? <><Icon />{children}</> : children}
+                        </Button>);
+    if(size === "lg") {
+        RenderButton = (<LargeButton style={iconStyle} bg = {bg} color = {color} onClick={handleClick}>
+                            {isLoading ? action === 'text' ? 'Loading...' : <Spinner /> : Icon ? <><Icon />{children}</> : children}
+                        </LargeButton>)
+    } else if (size === "sm") {
+        RenderButton = (<SmallButon style={iconStyle} bg = {bg} color = {color} onClick={handleClick}>
+                            {isLoading ? action === 'text' ? 'Loading...' : <Spinner /> : Icon ? <><Icon />{children}</> : children}
+                        </SmallButon>)
     }
 
     return(RenderButton);
