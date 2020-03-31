@@ -1,7 +1,8 @@
 import React from 'react';
 import * as Fa from 'react-icons/fa';
+import styled from 'styled-components'
 
-const Button = ({icon, iconPosition, buttonStyle, children, loading}) => {
+/*const Button = ({icon, iconPosition, buttonStyle, children, loading}) => {
     const Icon = Fa[icon];
     let iconStyle = {};
     if(iconPosition === "left") {
@@ -22,7 +23,7 @@ const Button = ({icon, iconPosition, buttonStyle, children, loading}) => {
         ButtonStyle={...ButtonStyle,...fullWidth}
     }*/
 
-    return (
+/*    return (
         <button style = {{...buttonStyle, ...iconStyle}} onClick = {() => loading()}>
             {Icon ? <Icon /> : null}
             {children}
@@ -44,6 +45,34 @@ const fullWidth={
 const LargeButton={
     fontSize:"20px"
 }
+*/
 
-export default Button;
+const Button = styled.button`
+  background: ${props => props.bg ? props.bg : "#0069D9"};
+  color: ${props => props.color ? props.color : "white"};
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid ${props => props.bg ? props.bg : "#0069D9"};
+  border-radius: 3px;
+`;
+
+const LargeButton = styled(Button)`
+    font-size : 1.5em;
+`;
+
+const SmallButon = styled(Button)`
+    font-size : 0.7em;
+`;
+
+export default (props) => {
+    let RenderButton =  (<Button bg = {props.bg} color = {props.color}>{props.children}</Button>);
+    if(props.size === "lg") {
+        RenderButton = (<LargeButton bg = {props.bg} color = {props.color}>{props.children}</LargeButton>)
+    } else if (props.size === "sm") {
+        RenderButton = (<SmallButon bg = {props.bg} color = {props.color}>{props.children}</SmallButon>)
+    }
+
+    return(RenderButton);
+};
 
