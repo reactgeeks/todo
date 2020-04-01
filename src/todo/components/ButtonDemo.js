@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import Button from './Button';
 import styled from 'styled-components';
 
@@ -11,11 +11,29 @@ const Container = styled.div`
 
 
 export default () => {
+    const [isLoading, setLoading] = useState(false);
+    const handleClick = () => {
+        setLoading(true);
+        setTimeout(() => setLoading(false), 1000);
+    };
+
+    const [isLoading2, setLoading2] = useState(false);
+    const handleClick2 = () => {
+        setLoading2(true);
+        setTimeout(() => setLoading2(false), 1000);
+    };
+
+    const [isLoading3, setLoading3] = useState(false);
+    const handleClick3 = () => {
+        setLoading3(true);
+        setTimeout(() => setLoading3(false), 1000);
+    };
+
     return(
         <React.Fragment>
             <h2>Buttons with different sizes</h2>
             <Container>
-                <Button size="sm" action="text">Small Button</Button>
+                <Button size="sm"  action="text">Small Button</Button>
                 <Button action="text">Normal Button</Button>
                 <Button size="lg" action="text">Large Button</Button>
             </Container>
@@ -31,7 +49,7 @@ export default () => {
             </Container>
             <h2>Buttons with icons</h2>
             <Container>
-                <Button icon = "FaGithub" iconPosition="left" action="icon">Icon Button</Button>
+                <Button icon = "FaGithub" iconPosition="left" action="icon" >Icon Button</Button>
                 <Button icon = "FaComment" iconPosition="right" bg="#218838" color="#FBFBFB" action="text">Icon Button</Button>
                 <Button icon = "FaApple" iconPosition="top" bg="#E0A800" color="black" action="text">Icon Button</Button>
                 <Button icon = "FaApple" iconPosition="bottom" bg="#C82333" color="#FBFBFB" action="text">Icon Button</Button>
@@ -40,16 +58,15 @@ export default () => {
             </Container>
             <h2>Buttons with different click action</h2>
             <Container>
-                <Button action="text">Loading Text Background</Button>
-                <Button bg="#138496" color="#FBFBFB" action="icon">Loading Icon Background</Button>
-                <Button bg="#138496" color="#FBFBFB" action="icon" size="lg">Loading Icon Background</Button>
-                <Button bg="#138496" color="#FBFBFB" action="icon" size="sm">Loading Icon Background</Button>
+                <Button action="text" isLoading={isLoading} handleClick={handleClick}>Click to load</Button>
+                <Button bg="#138496" color="#FBFBFB" action="icon" isLoading={isLoading2} handleClick={handleClick2}>Click to load</Button>
+                <Button bg="#138496" color="#FBFBFB" action="icon" size="lg" isLoading={isLoading3} handleClick={handleClick3}>Click to load</Button>
             </Container>
             <h2>Block Buttons</h2>
             <Container>
-                <Button bg="#282C34" color="#FBFBFB" action="text" block={true} size="sm">Custom Background</Button>
+                <Button bg="#282C34" color="#FBFBFB" action="text" block={true} size="sm">Full Width Button</Button>
                 <Button action="text" block={true}>Full Width Button</Button>            
-                <Button bg="#C82333" color="#FBFBFB" action="text" block={true} size="lg">Custom Background</Button>
+                <Button bg="#C82333" color="#FBFBFB" action="text" block={true} size="lg">Full Width Button</Button>
             </Container>
             
         </React.Fragment>

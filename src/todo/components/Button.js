@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import * as Fa from 'react-icons/fa';
 import styled from 'styled-components';
 
@@ -67,11 +67,7 @@ const StyledSpinner = styled.svg`
     }
   `;
 
-export default ({icon, bg, color, children, size, iconPosition, action, block}) => {
-    const [isLoading, setLoading] = useState(false);
-  
-    const handleClick = () => setLoading(true);
-
+export default ({icon, bg, color, children, size, iconPosition, action, block, isLoading, handleClick}) => {
     const Icon = Fa[icon];
     let iconStyle = {};
     
@@ -85,15 +81,15 @@ export default ({icon, bg, color, children, size, iconPosition, action, block}) 
         iconStyle = {display: 'flex', flexDirection: 'column-reverse', alignItems: 'center'}
     }
 
-    let RenderButton =  (<Button style={iconStyle} bg = {bg} color = {color} onClick = {handleClick} block = {block}>
+    let RenderButton =  (<Button style={iconStyle} bg = {bg} color = {color} block = {block} onClick = {handleClick}>
                             {isLoading ? action === 'text' ? 'Loading...' : <Spinner /> : Icon ? <><Icon />{children}</> : children}
                         </Button>);
     if(size === "lg") {
-        RenderButton = (<LargeButton style={iconStyle} bg = {bg} color = {color} onClick = {handleClick} block = {block}>
+        RenderButton = (<LargeButton style={iconStyle} bg = {bg} color = {color} block = {block} onClick = {handleClick}>
                             {isLoading ? action === 'text' ? 'Loading...' : <Spinner /> : Icon ? <><Icon />{children}</> : children}
                         </LargeButton>)
     } else if (size === "sm") {
-        RenderButton = (<SmallButon style={iconStyle} bg = {bg} color = {color} onClick = {handleClick} block = {block}>
+        RenderButton = (<SmallButon style={iconStyle} bg = {bg} color = {color} block = {block} handleClick = {handleClick}>
                             {isLoading ? action === 'text' ? 'Loading...' : <Spinner /> : Icon ? <><Icon />{children}</> : children}
                         </SmallButon>)
     }
