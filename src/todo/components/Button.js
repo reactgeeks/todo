@@ -80,7 +80,7 @@ export default ({icon, bg, color, children, size, iconPosition, action, block, i
     } else {
         iconStyle = {display: 'flex', flexDirection: 'column-reverse', alignItems: 'center'}
     }
-
+    console.log(handleClick)
     let RenderButton =  (<Button style={iconStyle} bg = {bg} color = {color} block = {block} onClick = {handleClick}>
                             {isLoading ? action === 'text' ? 'Loading...' : <Spinner /> : Icon ? <><Icon />{children}</> : children}
                         </Button>);
