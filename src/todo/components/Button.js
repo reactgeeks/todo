@@ -23,18 +23,18 @@ const SmallButon = styled(Button)`
 `;
 
 const Spinner = () => (
-    <StyledSpinner viewBox="0 0 50 50">
-      <circle
-        className="path"
-        cx="25"
-        cy="25"
-        r="20"
-        fill="none"
-        strokeWidth="2"
-      />
-    </StyledSpinner>
-  );
-  
+  <StyledSpinner viewBox="0 0 50 50">
+    <circle
+      className="path"
+      cx="25"
+      cy="25"
+      r="20"
+      fill="none"
+      strokeWidth="2"
+    />
+  </StyledSpinner>
+);
+
 const StyledSpinner = styled.svg`
     animation: rotate 1s linear infinite;
     width: 20px;
@@ -67,33 +67,33 @@ const StyledSpinner = styled.svg`
     }
   `;
 
-export default ({icon, bg, color, children, size, iconPosition, action, block, isLoading, handleClick}) => {
-    const Icon = Fa[icon];
-    let iconStyle = {};
-    
-    if(iconPosition === "left") {
-        iconStyle = {display: 'flex', flexDirection: 'row', alignItems: 'center'}
-    } else if(iconPosition === "right") {
-        iconStyle = {display: 'flex', flexDirection: 'row-reverse', alignItems: 'center'}
-    } else if(iconPosition === "top") {
-        iconStyle = {display: 'flex', flexDirection: 'column', alignItems: 'center'}
-    } else {
-        iconStyle = {display: 'flex', flexDirection: 'column-reverse', alignItems: 'center'}
-    }
+export default ({ icon, bg, color, children, size, iconPosition, action, block, isLoading, handleClick }) => {
+  const Icon = Fa[icon];
+  let iconStyle = {};
 
-    let RenderButton =  (<Button style={iconStyle} bg = {bg} color = {color} block = {block} onClick = {handleClick}>
-                            {isLoading ? action === 'text' ? 'Loading...' : <Spinner /> : Icon ? <><Icon />{children}</> : children}
-                        </Button>);
-    if(size === "lg") {
-        RenderButton = (<LargeButton style={iconStyle} bg = {bg} color = {color} block = {block} onClick = {handleClick}>
-                            {isLoading ? action === 'text' ? 'Loading...' : <Spinner /> : Icon ? <><Icon />{children}</> : children}
-                        </LargeButton>)
-    } else if (size === "sm") {
-        RenderButton = (<SmallButon style={iconStyle} bg = {bg} color = {color} block = {block} handleClick = {handleClick}>
-                            {isLoading ? action === 'text' ? 'Loading...' : <Spinner /> : Icon ? <><Icon />{children}</> : children}
-                        </SmallButon>)
-    }
+  if (iconPosition === "left") {
+    iconStyle = { display: 'flex', flexDirection: 'row', alignItems: 'center' }
+  } else if (iconPosition === "right") {
+    iconStyle = { display: 'flex', flexDirection: 'row-reverse', alignItems: 'center' }
+  } else if (iconPosition === "top") {
+    iconStyle = { display: 'flex', flexDirection: 'column', alignItems: 'center' }
+  } else {
+    iconStyle = { display: 'flex', flexDirection: 'column-reverse', alignItems: 'center' }
+  }
 
-    return(RenderButton);
+  let RenderButton = (<Button style={iconStyle} bg={bg} color={color} block={block} onClick={handleClick}>
+    {isLoading ? action === 'text' ? 'Loading...' : <Spinner /> : Icon ? <><Icon />{children}</> : children}
+  </Button>);
+  if (size === "lg") {
+    RenderButton = (<LargeButton style={iconStyle} bg={bg} color={color} block={block} onClick={handleClick}>
+      {isLoading ? action === 'text' ? 'Loading...' : <Spinner /> : Icon ? <><Icon />{children}</> : children}
+    </LargeButton>)
+  } else if (size === "sm") {
+    RenderButton = (<SmallButon style={iconStyle} bg={bg} color={color} block={block} handleClick={handleClick}>
+      {isLoading ? action === 'text' ? 'Loading...' : <Spinner /> : Icon ? <><Icon />{children}</> : children}
+    </SmallButon>)
+  }
+
+  return (RenderButton);
 };
 
