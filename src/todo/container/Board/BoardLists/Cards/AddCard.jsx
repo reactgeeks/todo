@@ -1,16 +1,22 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 const AddCard = props => {
-    return (
+  return (
+    <div>
+      <div className="card-description">
+        <textarea name="description" rows="4" cols="35">
+          Enter description here...
+        </textarea>
         <div>
-            Add card fields will appear here
+          <button type="button">Add Card</button>{" "}
+          <span className="add-card-cancel">X</span>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
-AddCard.propTypes = {
-    
-};
+AddCard.propTypes = {};
 
 export default AddCard;
