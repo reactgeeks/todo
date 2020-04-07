@@ -1,0 +1,16 @@
+:root {
+    --color-surface: white;
+    --color-solid: black;
+    --color-primary: teal;
+  }
+  
+  .MyApp {
+    padding: 12rem;
+    background-color: var(--color-primary);
+  }
+  
+  .innerDiv{
+    padding: 12rem;
+    background-color: var(--color-primary);
+  
+  }
