@@ -2,11 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import ButtonDemo from './todo/components/ButtonDemo';
 import * as serviceWorker from './serviceWorker';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <Switch>
+        <Route exact path= "/" component={App} />
+        <Route exact path="/button" component={ButtonDemo} />
+      </Switch>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
