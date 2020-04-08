@@ -4,7 +4,8 @@ import Styled from 'styled-components';
 const Container = Styled.div`
     margin : ${props => props.margin ? props.margin : '3px'};
     display : flex;
-    flex-direction: ${props => props.vertical ? 'column' : 'row'}
+    flex-direction: ${props => props.vertical ? 'column' : 'row'};
+    align-items : center;
 `;
 
 export default ({in_margin, out_margin, children, vertical}) => {
