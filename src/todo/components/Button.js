@@ -2,7 +2,7 @@ import React from 'react';
 import * as Fa from 'react-icons/fa';
 import styled from 'styled-components';
 
-const Button = styled.button`
+const ButtonContainer = styled.button`
   background: ${props => props.bg ? props.bg : "#0069D9"};
   color: ${props => props.color ? props.color : "white"};
   font-size: 1em;
@@ -18,11 +18,11 @@ const Button = styled.button`
   }
 `;
 
-const LargeButton = styled(Button)`
+const LargeButtonContainer = styled(ButtonContainer)`
     font-size : 1.5em;
 `;
 
-const SmallButon = styled(Button)`
+const SmallButtonContainer = styled(ButtonContainer)`
     font-size : 0.7em;
 `;
 
@@ -71,7 +71,13 @@ const StyledSpinner = styled.svg`
     }
   `;
 
-export default ({ icon, bg, color, children, size, iconPosition, action, block, isLoading, handleClick, margin }) => {
+const Container = styled.div`
+  margin : ${props => props.margin ? props.margin : '3px'};
+  display : flex;
+  flex-direction: ${props => props.vertical ? 'column' : 'row'}
+`;
+
+const Button = ({ icon, bg, color, children, size, iconPosition, action, block, isLoading, handleClick, margin }) => {
   const Icon = Fa[icon];
   let iconStyle = {};
 
@@ -84,20 +90,28 @@ export default ({ icon, bg, color, children, size, iconPosition, action, block, 
   } else {
     iconStyle = { display: 'flex', flexDirection: 'column-reverse', alignItems: 'center' }
   }
-  console.log(handleClick)
-  let RenderButton = (<Button style={iconStyle} bg={bg} color={color} block={block} onClick={handleClick} margin={margin}>
+
+  let RenderButtonContainer = (<ButtonContainer style={iconStyle} bg={bg} color={color} block={block} onClick={handleClick} margin={margin}>
     {isLoading ? action === 'text' ? 'Loading...' : <Spinner /> : Icon ? <><Icon />{children}</> : children}
-  </Button>);
+  </ButtonContainer>);
   if (size === "lg") {
-    RenderButton = (<LargeButton style={iconStyle} bg={bg} color={color} block={block} onClick={handleClick} margin={margin}>
+    RenderButtonContainer = (<LargeButtonContainer style={iconStyle} bg={bg} color={color} block={block} onClick={handleClick} margin={margin}>
       {isLoading ? action === 'text' ? 'Loading...' : <Spinner /> : Icon ? <><Icon />{children}</> : children}
-    </LargeButton>)
+    </LargeButtonContainer>)
   } else if (size === "sm") {
-    RenderButton = (<SmallButon style={iconStyle} bg={bg} color={color} block={block} handleClick={handleClick} margin={margin}>
+    RenderButtonContainer = (<SmallButtonContainer style={iconStyle} bg={bg} color={color} block={block} handleClick={handleClick} margin={margin}>
       {isLoading ? action === 'text' ? 'Loading...' : <Spinner /> : Icon ? <><Icon />{children}</> : children}
-    </SmallButon>)
+    </SmallButtonContainer>)
   }
 
-  return (RenderButton);
+  return (RenderButtonContainer);
 };
 
+export const GroupButton = ({in_margin, out_margin, children, vertical}) => {
+    const childrenWithProps = React.Children.map(children, child =>
+        React.cloneElement(child, {margin : in_margin})
+    );  
+    return <Container vertical={vertical} margin = {out_margin}>{childrenWithProps}</Container>
+}
+
+export default Button;

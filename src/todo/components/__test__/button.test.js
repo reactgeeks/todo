@@ -6,7 +6,6 @@ import Adapter from 'enzyme-adapter-react-16';
 import renderer from 'react-test-renderer'
 import 'jest-styled-components'
 
-
 configure({ adapter: new Adapter() });
 
 describe("Testcases for button", () => {
@@ -77,5 +76,4 @@ describe("Testcases for button", () => {
         const largeButton = renderer.create(<Button size="lg"/>).toJSON();
         expect(largeButton).toHaveStyleRule('font-size', '1.5em');
     });
-
 })

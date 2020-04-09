@@ -1,6 +1,5 @@
 import React, { useState }  from 'react';
-import Button from './Button';
-import ButtonGroup from './ButtonGroup';
+import Button, {GroupButton} from './Button';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -73,18 +72,18 @@ export default () => {
             <div>
                 <h3>Vertical Group Button</h3>
                 <Container>
-                    <ButtonGroup vertical in_margin="0" out_margin="10px">
+                    <GroupButton vertical in_margin="0" out_margin="10px">
                         <Button action="text" isLoading={isLoading} handleClick={handleClick}>Click to load</Button>
                         <Button bg="#138496" color="#FBFBFB" action="icon" isLoading={isLoading2} handleClick={handleClick2}>Click to load</Button>
                         <Button bg="#138496" color="#FBFBFB" action="icon" isLoading={isLoading3} handleClick={handleClick3}>Click to load</Button>
-                    </ButtonGroup>
+                    </GroupButton>
                 </Container>
                 <h3>Horizontal Group Button</h3>
-                <ButtonGroup in_margin="1px" out_margin="10px">
+                <GroupButton in_margin="1px" out_margin="10px">
                     <Button action="text" isLoading={isLoading} handleClick={handleClick}>Click to load</Button>
                     <Button bg="#138496" color="#FBFBFB" action="icon" isLoading={isLoading2} handleClick={handleClick2}>Click to load</Button>
                     <Button bg="#138496" color="#FBFBFB" action="icon" isLoading={isLoading3} handleClick={handleClick3}>Click to load</Button>
-                </ButtonGroup>
+                </GroupButton>
             </div>
         </React.Fragment>
     ); 
