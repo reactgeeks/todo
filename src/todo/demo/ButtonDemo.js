@@ -1,5 +1,5 @@
 import React, { useState }  from 'react';
-import Button, {GroupButton} from './Button';
+import Button, {GroupButton} from '../components/Button';
 import styled from 'styled-components';
 
 const Container = styled.div`

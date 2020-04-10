@@ -1,8 +1,6 @@
-import React, { useState }  from 'react';
+import React  from 'react';
 import { action } from '@storybook/addon-actions';
-import  Button  from '../todo/components/Button';
-import ButtonGroup from '../todo/components/ButtonGroup';
-
+import  Button, {GroupButton}  from '../todo/components/Button';
 
 export default {
   title: 'Button',
@@ -19,14 +17,14 @@ export const LoadingIconButton = () => <Button icon = "FaGithub" iconPosition="l
 export const LoadingTextButton = () => <Button action="text" isLoading={true}>Loading Text Background</Button>;
 export const FullWidthButton = () => <Button action="text" block={true}>Full Width Button</Button>;
 export const horizontalGroupBUttons = () => (
-<ButtonGroup in_margin="1px" out_margin="10px">
+<GroupButton in_margin="1px" out_margin="10px">
     <Button action="text">Button</Button>
     <Button bg="#138496" color="#FBFBFB">Button</Button>
     <Button bg="#138496" color="#FBFBFB">Button</Button>
-</ButtonGroup>);
+</GroupButton>);
 export const verticalGroupButtons = () => (
-<ButtonGroup in_margin="0" out_margin="10px" vertical>
+<GroupButton in_margin="0" out_margin="10px" vertical>
     <Button action="text">Button</Button>
     <Button bg="#138496" color="#FBFBFB">Button</Button>
     <Button bg="#138496" color="#FBFBFB">Button</Button>
-</ButtonGroup>);
+</GroupButton>);

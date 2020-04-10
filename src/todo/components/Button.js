@@ -74,7 +74,8 @@ const StyledSpinner = styled.svg`
 const Container = styled.div`
   margin : ${props => props.margin ? props.margin : '3px'};
   display : flex;
-  flex-direction: ${props => props.vertical ? 'column' : 'row'}
+  flex-direction: ${props => props.vertical ? 'column' : 'row'};
+  align-items: center;
 `;
 
 const Button = ({ icon, bg, color, children, size, iconPosition, action, block, isLoading, handleClick, margin }) => {
