@@ -5,24 +5,24 @@ import {themeHOD,ThemeProvider} from "./theme";
 const ButtonComponent = styled.button`
   margin-top: .25rem;
   margin-bottom: .25rem;
-  color:${props=>props.themeObject&&props.themeObject.white};
+  color:${props=>props.themeObject&&props.themeObject.white[props.themeObject.theme]};
   &.primary {
-    background-color: ${props=>props.themeObject&&props.themeObject.button.primaryColor};
-    border-color:${props=>props.themeObject&&props.themeObject.button.primaryColor};
+    background-color: ${props=>props.themeObject&&props.themeObject.primary[props.themeObject.theme]};
+    border-color:${props=>props.themeObject&&props.themeObject.primary[props.themeObject.theme]};
   }
   &.secondary {
-    background-color: ${props=>props.themeObject&&props.themeObject.button.secondaryColor};
-    border-color:${props=>props.themeObject&&props.themeObject.button.secondaryColor};
+    background-color: ${props=>props.themeObject&&props.themeObject.secondary[props.themeObject.theme]};
+    border-color:${props=>props.themeObject&&props.themeObject.secondary[props.themeObject.theme]};
   }
   &.success {
-    background-color: ${props=>props.themeObject&&props.themeObject.button.successColor};
-    border-color:${props=>props.themeObject&&props.themeObject.button.successColor};
+    background-color: ${props=>props.themeObject&&props.themeObject.success[props.themeObject.theme]};
+    border-color:${props=>props.themeObject&&props.themeObject.success[props.themeObject.theme]};
   }&.danger {
-    background-color: ${props=>props.themeObject&&props.themeObject.button.dangerColor};
-    border-color:${props=>props.themeObject&&props.themeObject.button.dangerColor};
+    background-color: ${props=>props.themeObject&&props.themeObject.danger[props.themeObject.theme]};
+    border-color:${props=>props.themeObject&&props.themeObject.danger[props.themeObject.theme]};
   }&.info {
-    background-color: ${props=>props.themeObject&&props.themeObject.button.infoColor};
-    border-color:${props=>props.themeObject&&props.themeObject.button.infoColor};
+    background-color: ${props=>props.themeObject&&props.themeObject.info[props.themeObject.theme]};
+    border-color:${props=>props.themeObject&&props.themeObject.info[props.themeObject.theme]};
   }
 `;
  
@@ -46,12 +46,12 @@ export class ButtonDemo extends React.Component{
     }
     onChangeTheme=()=>{
         this.setState({
-            theme:this.state.theme=="dark"?"normal":"dark"
+            theme:this.state.theme=="dark"?"light":"dark"
         })
     }
     render(){
         return (<div>
-            <Button className="primary" onClick={this.onChangeTheme}> Change theme {this.state.theme=="dark"?"normal":"dark"}</Button><br></br>
+            <Button className="primary" onClick={this.onChangeTheme}> Change theme {this.state.theme=="dark"?"light":"dark"}</Button><br></br>
             <hr/>
             <ThemeProvider theme={this.state.theme}>
                 <Button className="primary">Primary</Button><br></br>

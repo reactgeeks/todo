@@ -1,24 +1,32 @@
 import React from "react";
 
-const colorplate={
-    primaryColor:"#007bff",
-    secondaryColor:"#6c757d",
-    successColor:"#28a745",
-    infoColor:"#17a2b8",
-    dangerColor:"#dc3545",
+const colorplate={ 
 
-    white:"#FFFFFF"
-}
-const darkThemePalate={
-    primaryColor:"#161a1f",
-    secondaryColor:"#214f78",
-    successColor:"#267037",
-    infoColor:"#007f93",
-    dangerColor:"#99343e",
-
-    white:"#FFFFFF"
-}
-
+    white:{
+        light:"#FFFFFF",
+        dark:"#FFFFFF"
+    },
+    primary:{
+        light:"007bff",
+        dark:"#161a1f"
+    },
+    secondary:{
+        light:"#6c757d",
+        dark:"#214f78"
+    },
+    success:{
+        light:"#28a745",
+        dark:"#267037"
+    },
+    info:{
+        light:"#17a2b8",
+        dark:"#007f93"
+    },
+    danger:{
+        light:"#dc3545",
+        dark:"#99343e"
+    }
+} 
 
 export const ThemeContext = React.createContext({
     ...colorplate,
@@ -39,44 +47,18 @@ export const ThemeContext = React.createContext({
 
 export class ThemeProvider extends React.Component{
     state={
-        dark:{
-            ...darkThemePalate,
-            input:{
-                color:"black",
-                background:'green'
-            },
-            button:{
-                primaryColor:darkThemePalate.primaryColor,
-                secondaryColor:darkThemePalate.secondaryColor,
-                successColor:darkThemePalate.successColor,
-                infoColor:darkThemePalate.infoColor,
-                dangerColor:darkThemePalate.dangerColor,
-                white:darkThemePalate.white
-            }
-        },
-        normal:{
-            ...colorplate,
-            input:{
-                color:"blue",
-                background:"grey",
-                
-            },
-            button:{
-                primaryColor:colorplate.primaryColor,
-                secondaryColor:colorplate.secondaryColor,
-                successColor:colorplate.successColor,
-                infoColor:colorplate.infoColor,
-                dangerColor:colorplate.dangerColor,
-                white:colorplate.white
-            }
-        }
+        ...colorplate
     }
-    render(){
-        let theme=this.state.normal;
-        if(this.props.theme){
-            theme=this.state[this.props.theme]
-        }
-        return(<ThemeContext.Provider value={theme}>
+    static getDerivedStateFromProps(prevprops, state){
+        if( prevprops && prevprops.theme!=state.theme)
+            return {theme:prevprops.theme}
+        else  return {}
+    }
+    render(){ 
+        console.log(this.state)
+        return(<ThemeContext.Provider value={
+            {...this.state}
+        }>
             {this.props.children}
         </ThemeContext.Provider>)
     }
