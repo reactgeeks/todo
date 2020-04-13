@@ -1,15 +1,18 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import Cards from "./Cards";
 import AddCard from "./Cards/AddCard";
 
-const BoardLists = props => {
+const BoardLists = (props) => {
   return (
     <div>
       <div className="boards-list">
         <div className="board-title">
           board title1
-          <span className="board-delete">Delete</span>
+          <span className="board-delete">
+            <FontAwesomeIcon icon={faTrash} />
+          </span>
         </div>
 
         <Cards />

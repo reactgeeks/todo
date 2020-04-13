@@ -1,12 +1,15 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPen } from "@fortawesome/free-solid-svg-icons";
 import EditCard from "./EditCard";
 
-const Cards = props => {
+const Cards = (props) => {
   return (
     <div>
       <div className="card">
-        <span className="card-edit-button">Edit</span>
+        <span className="card-edit-button">
+          <FontAwesomeIcon icon={faPen} />
+        </span>
         <p>content for card one</p>
       </div>
       <EditCard />
