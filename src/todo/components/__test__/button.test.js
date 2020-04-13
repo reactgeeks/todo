@@ -23,7 +23,7 @@ describe("Testcases for button", () => {
         });
         wrapper.simulate("click");
         let html = wrapper.html();
-        expect(html.indexOf('svg')).toBe(103);
+        expect(html.indexOf('svg')).toBe(33);
 
         wrapper.setProps({
             handleClick: onclick,
@@ -32,32 +32,24 @@ describe("Testcases for button", () => {
         });
         wrapper.simulate("click");
         html = wrapper.html();
-        expect(html.indexOf('Loading...')).toBe(102);
+        expect(html.indexOf('Loading...')).toBe(32);
     })
 
     test("test icons and there positions", () => {
-        wrapper.setProps({
-            icon: 'FaGithub',
-            iconPosition: 'left'
-        });
-        let html = wrapper.html();
-        expect(html.indexOf('flex-direction:row')).toBe(28);
-
-        wrapper.setProps({
-            icon: 'FaGithub',
-            iconPosition: 'right'
-        });
-        html = wrapper.html();
-        expect(html.indexOf('flex-direction:row-reverse')).toBe(28);
-
-        wrapper.setProps({
-            icon: 'FaGithub',
-            iconPosition: 'top'
-        });
-        html = wrapper.html();
-        expect(html.indexOf('flex-direction:column')).toBe(28);
-
+        let icon = "FaGithub";
         
+        const leftIcon = renderer.create(<Button action="icon" icon={icon} iconPosition="left"/>).toJSON();
+        console.log(leftIcon);
+        expect(leftIcon).toMatchSnapshot();
+
+        const rightIcon = renderer.create(<Button action="icon" icon={icon} iconPosition="right"/>).toJSON();
+        expect(rightIcon).toMatchSnapshot(); 
+
+        const topIcon = renderer.create(<Button action="icon" icon={icon} iconPosition="top"/>).toJSON();
+        expect(topIcon).toMatchSnapshot();
+        
+        const bottomIcon = renderer.create(<Button action="icon" icon={icon} iconPosition="bottom"/>).toJSON();
+        expect(bottomIcon).toMatchSnapshot();
     })
 
     test("test background and color", () => {

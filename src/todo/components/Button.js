@@ -10,11 +10,30 @@ const ButtonContainer = styled.button`
   padding: 0.25em 1em;
   border: 2px solid ${props => props.bg ? props.bg : "#0069D9"};
   border-radius: 3px;
-  width: ${props => props.block ? '98%' : ""};
+  width: ${props => props.block ? '100%' : "fit-content"};
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &:hover {
     filter: brightness(1.2);
+  }
+
+  &.left {
+    flex-direction: row;
+  }
+
+  &.right {
+    flex-direction: row-reverse;
+  }
+
+  &.top {
+    flex-direction: column;
+  }
+
+  &.bottom {
+    flex-direction: column-reverse;
   }
 `;
 
@@ -71,48 +90,28 @@ const StyledSpinner = styled.svg`
     }
   `;
 
-const Container = styled.div`
-  margin : ${props => props.margin ? props.margin : '3px'};
-  display : flex;
-  flex-direction: ${props => props.vertical ? 'column' : 'row'};
-  align-items: center;
-`;
-
-const Button = ({ icon, bg, color, children, size, iconPosition, action, block, isLoading, handleClick, margin }) => {
+const Button = ({ icon, bg, color, children, size, iconPosition, action, block, isLoading, onClick, margin }) => {
   const Icon = Fa[icon];
-  let iconStyle = {};
 
-  if (iconPosition === "left") {
-    iconStyle = { display: 'flex', flexDirection: 'row', alignItems: 'center' }
-  } else if (iconPosition === "right") {
-    iconStyle = { display: 'flex', flexDirection: 'row-reverse', alignItems: 'center' }
-  } else if (iconPosition === "top") {
-    iconStyle = { display: 'flex', flexDirection: 'column', alignItems: 'center' }
-  } else {
-    iconStyle = { display: 'flex', flexDirection: 'column-reverse', alignItems: 'center' }
-  }
-
-  let RenderButtonContainer = (<ButtonContainer style={iconStyle} bg={bg} color={color} block={block} onClick={handleClick} margin={margin}>
-    {isLoading ? action === 'text' ? 'Loading...' : <Spinner /> : Icon ? <><Icon />{children}</> : children}
-  </ButtonContainer>);
+  let RenderButtonContainer = (
+    <ButtonContainer className={iconPosition} bg={bg} color={color} block={block} onClick={onClick} margin={margin}>
+      {isLoading ? action === 'text' ? 'Loading...' : <Spinner /> : Icon ? <><Icon />{children}</> : children}
+    </ButtonContainer>
+  );
   if (size === "lg") {
-    RenderButtonContainer = (<LargeButtonContainer style={iconStyle} bg={bg} color={color} block={block} onClick={handleClick} margin={margin}>
-      {isLoading ? action === 'text' ? 'Loading...' : <Spinner /> : Icon ? <><Icon />{children}</> : children}
-    </LargeButtonContainer>)
+    RenderButtonContainer = (
+      <LargeButtonContainer className={iconPosition} bg={bg} color={color} block={block} onClick={onClick} margin={margin}>
+        {isLoading ? action === 'text' ? 'Loading...' : <Spinner /> : Icon ? <><Icon />{children}</> : children}
+      </LargeButtonContainer>
+    );
   } else if (size === "sm") {
-    RenderButtonContainer = (<SmallButtonContainer style={iconStyle} bg={bg} color={color} block={block} handleClick={handleClick} margin={margin}>
-      {isLoading ? action === 'text' ? 'Loading...' : <Spinner /> : Icon ? <><Icon />{children}</> : children}
-    </SmallButtonContainer>)
+    RenderButtonContainer = (
+      <SmallButtonContainer className={iconPosition} bg={bg} color={color} block={block} handleClick={onClick} margin={margin}>
+        {isLoading ? action === 'text' ? 'Loading...' : <Spinner /> : Icon ? <><Icon />{children}</> : children}
+      </SmallButtonContainer>
+    );
   }
-
   return (RenderButtonContainer);
 };
-
-export const GroupButton = ({in_margin, out_margin, children, vertical}) => {
-    const childrenWithProps = React.Children.map(children, child =>
-        React.cloneElement(child, {margin : in_margin})
-    );  
-    return <Container vertical={vertical} margin = {out_margin}>{childrenWithProps}</Container>
-}
 
 export default Button;
