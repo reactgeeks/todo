@@ -5,15 +5,16 @@ import styled from 'styled-components';
 const ButtonContainer = styled.button`
   background: ${props => props.bg ? props.bg : "#0069D9"};
   color: ${props => props.color ? props.color : "white"};
-  font-size: 1em;
-  margin: ${props => props.margin ? props.margin : '1em'};
-  padding: 0.25em 1em;
+  margin: ${props => props.margin ? props.margin : '0'};
+  outline: ${props => props.outline ? props.outline : ''};
   border: 2px solid ${props => props.bg ? props.bg : "#0069D9"};
   border-radius: ${props => props.borderRadius ? props.borderRadius : "3px"};
-  width: ${props => props.block ? '100%' : "fit-content"};
+  width: ${props => props.block ? '100%' : props.width ? props.width : 'fit-content'};
+  padding: 0.25em 1em;
+  font-size: 1em;
   cursor: pointer;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
 
   &:hover {
@@ -90,28 +91,46 @@ const StyledSpinner = styled.svg`
     }
   `;
 
-const Button = ({ icon, bg, color, children, size, iconPosition, action, block, isLoading, onClick, margin }) => {
+const GroupButtonContainer = styled.div`
+  margin : ${props => props.margin ? props.margin : '3px'};
+  display : flex;
+  flex-direction: ${props => props.vertical ? 'column' : 'row'};
+  align-items: center;
+  border: 1px solid ${props => props.background ? props.background : '#0069D9'};
+  background: ${props => props.background ? props.background : '#0069D9'};
+  border-radius: 3px;
+  width: fit-content;
+`;
+
+const Button = ({ icon, bg, color, children, size, iconPosition, action, block, isLoading, onClick, margin, borderRadius, width, outline }) => {
   const Icon = Fa[icon];
 
   let RenderButtonContainer = (
-    <ButtonContainer className={iconPosition} bg={bg} color={color} block={block} onClick={onClick} margin={margin}>
+    <ButtonContainer className={iconPosition} bg={bg} color={color} block={block} onClick={onClick} margin={margin} borderRadius={borderRadius} width={width} outline={outline}>
       {isLoading ? action === 'text' ? 'Loading...' : <Spinner /> : Icon ? <><Icon />{children}</> : children}
     </ButtonContainer>
   );
   if (size === "lg") {
     RenderButtonContainer = (
-      <LargeButtonContainer className={iconPosition} bg={bg} color={color} block={block} onClick={onClick} margin={margin}>
+      <LargeButtonContainer className={iconPosition} bg={bg} color={color} block={block} onClick={onClick} margin={margin} borderRadius={borderRadius} width={width} outline={outline}>
         {isLoading ? action === 'text' ? 'Loading...' : <Spinner /> : Icon ? <><Icon />{children}</> : children}
       </LargeButtonContainer>
     );
   } else if (size === "sm") {
     RenderButtonContainer = (
-      <SmallButtonContainer className={iconPosition} bg={bg} color={color} block={block} handleClick={onClick} margin={margin}>
+      <SmallButtonContainer className={iconPosition} bg={bg} color={color} block={block} handleClick={onClick} margin={margin} borderRadius={borderRadius} width={width} outline={outline}>
         {isLoading ? action === 'text' ? 'Loading...' : <Spinner /> : Icon ? <><Icon />{children}</> : children}
       </SmallButtonContainer>
     );
   }
   return (RenderButtonContainer);
 };
+
+export const GroupButton = ({ background, vertical, color, children, in_margin, out_margin, width, outline }) => {
+  const childrenWithProps = React.Children.map(children, child =>
+    React.cloneElement(child, {margin : in_margin, borderRadius: '0', color: color, bg:background, width: width, outline:outline})
+  );
+  return <GroupButtonContainer vertical={vertical} margin = {out_margin} background={background}>{childrenWithProps}</GroupButtonContainer>
+}
 
 export default Button;
