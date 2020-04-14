@@ -9,7 +9,7 @@ const ButtonContainer = styled.button`
   margin: ${props => props.margin ? props.margin : '1em'};
   padding: 0.25em 1em;
   border: 2px solid ${props => props.bg ? props.bg : "#0069D9"};
-  border-radius: 3px;
+  border-radius: ${props => props.borderRadius ? props.borderRadius : "3px"};
   width: ${props => props.block ? '100%' : "fit-content"};
   cursor: pointer;
   display: flex;
