@@ -23,7 +23,7 @@ describe("Testcases for button", () => {
         });
         wrapper.simulate("click");
         let html = wrapper.html();
-        expect(html.indexOf('svg')).toBe(33);
+        expect(html.indexOf('svg')).toBe(32);
 
         wrapper.setProps({
             handleClick: onclick,
@@ -32,14 +32,13 @@ describe("Testcases for button", () => {
         });
         wrapper.simulate("click");
         html = wrapper.html();
-        expect(html.indexOf('Loading...')).toBe(32);
+        expect(html.indexOf('Loading...')).toBe(31);
     })
 
     test("test icons and there positions", () => {
         let icon = "FaGithub";
         
         const leftIcon = renderer.create(<Button action="icon" icon={icon} iconPosition="left"/>).toJSON();
-        console.log(leftIcon);
         expect(leftIcon).toMatchSnapshot();
 
         const rightIcon = renderer.create(<Button action="icon" icon={icon} iconPosition="right"/>).toJSON();
