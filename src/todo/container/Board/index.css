@@ -1,0 +1,94 @@
+.board {
+  margin: 0px;
+  padding: 0px;
+  background: #f1f1f1;
+}
+
+.board-container {
+  width: 300px;
+  height: 330px;
+  background: #fff;
+  border-radius: 6px;
+  position: absolute;
+  box-shadow: 1px 1px 10px 1px;
+  top: 10%;
+  left: 10%;
+}
+
+.boards {
+  padding: 1em;
+}
+
+.boards-list {
+  justify-content: space-between;
+  background: lightgray;
+  border-radius: 6px;
+  position: inherit;
+  width: 300px;
+  border: 1px solid lightslategray;
+}
+
+.card {
+  padding: 0em 0em 0em 1em;
+  border: 0.5px solid darkgrey;
+  margin: 1em;
+  border-radius: 0.5em;
+  background: white;
+}
+
+.board-title {
+  padding: 1em 0em 0em 1em;
+  font-size: medium;
+  font-weight: bold;
+}
+
+.board-delete {
+  float: right;
+  margin-right: 1em;
+}
+
+.add-new-card {
+  padding: 0em 0em 1em 1em;
+  font-weight: normal;
+  font-style: oblique;
+  font-size: medium;
+}
+
+.card-description {
+  padding: 0em 0em 1em 1em;
+}
+
+textarea {
+  border-radius: 0.5em;
+  font-size: medium;
+  font-family: monospace;
+  resize: vertical;
+}
+
+button {
+  background: darkseagreen;
+  border: none;
+  padding: 0.75em;
+  border-radius: 0.5em;
+}
+
+.add-card-cancel {
+  float: right;
+  margin-right: 1em;
+  font-size: larger;
+  font-weight: bold;
+}
+
+.card-edit-button {
+  float: right;
+  margin: 13px 10px;
+}
+
+.scrollbar-auto {
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: fixed;
+}
