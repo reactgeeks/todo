@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Button, {GroupButton} from '../components/Button';
+import DateTime from '../components/DateTime';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -66,6 +67,7 @@ export default () => {
             <Container>
                 <Button margin="5px" bg="#282C34" color="#FBFBFB" action="text" block={true} size="sm">Full Width Button</Button>
                 <Button margin="5px" action="text" block={true}>Full Width Button</Button>
+                <Button margin="5px" action="text" block={true} align="center">Full Width Button with centered text</Button>
                 <Button margin="5px" bg="#C82333" color="#FBFBFB" action="text" block={true} size="lg">Full Width Button</Button>
             </Container>
             <h2>Horizontal Group Buttons</h2>
@@ -109,6 +111,10 @@ export default () => {
                     <Button>Three</Button>
                     <Button>Four</Button>
                 </GroupButton>
+            </Container>
+            <h2>DateTime Component</h2>
+            <Container>
+                <DateTime/>
             </Container>
         </React.Fragment>
     );

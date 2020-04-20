@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import ButtonDemo from './todo/demo/ButtonDemo';
+import Demo from './todo/demo/Demo';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -11,7 +11,7 @@ ReactDOM.render(
     <Router>
       <Switch>
         <Route exact path= "/" component={App} />
-        <Route exact path="/button" component={ButtonDemo} />
+        <Route exact path="/demo" component={Demo} />
       </Switch>
     </Router>
   </React.StrictMode>,

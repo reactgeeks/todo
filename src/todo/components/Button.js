@@ -10,11 +10,11 @@ const ButtonContainer = styled.button`
   border: 2px solid ${props => props.bg ? props.bg : "#0069D9"};
   border-radius: ${props => props.borderRadius ? props.borderRadius : "3px"};
   width: ${props => props.block ? '100%' : props.width ? props.width : 'fit-content'};
-  padding: 0.25em 1em;
+  justify-content: ${props => props.align ? props.align : 'left'};
+  padding: ${props => props.padding ? props.padding : '0.25em 1em'};
   font-size: 1em;
   cursor: pointer;
   display: flex;
-  justify-content: left;
   align-items: center;
 
   &:hover {
@@ -35,6 +35,10 @@ const ButtonContainer = styled.button`
 
   &.bottom {
     flex-direction: column-reverse;
+  }
+
+  & > svg {
+    margin: 0 5px;
   }
 `;
 
@@ -102,23 +106,23 @@ const GroupButtonContainer = styled.div`
   width: fit-content;
 `;
 
-const Button = ({ icon, bg, color, children, size, iconPosition, action, block, isLoading, onClick, margin, borderRadius, width, outline }) => {
+const Button = ({ icon, bg, color, children, size, iconPosition, action, block, isLoading, onClick, margin, borderRadius, width, outline, align, padding }) => {
   const Icon = Fa[icon];
 
   let RenderButtonContainer = (
-    <ButtonContainer className={iconPosition} bg={bg} color={color} block={block} onClick={onClick} margin={margin} borderRadius={borderRadius} width={width} outline={outline}>
+    <ButtonContainer className={iconPosition} bg={bg} color={color} block={block} onClick={onClick} margin={margin} borderRadius={borderRadius} width={width} outline={outline} align={align} padding={padding}>
       {isLoading ? action === 'text' ? 'Loading...' : <Spinner /> : Icon ? <><Icon />{children}</> : children}
     </ButtonContainer>
   );
   if (size === "lg") {
     RenderButtonContainer = (
-      <LargeButtonContainer className={iconPosition} bg={bg} color={color} block={block} onClick={onClick} margin={margin} borderRadius={borderRadius} width={width} outline={outline}>
+      <LargeButtonContainer className={iconPosition} bg={bg} color={color} block={block} onClick={onClick} margin={margin} borderRadius={borderRadius} width={width} outline={outline} align={align} padding={padding}>
         {isLoading ? action === 'text' ? 'Loading...' : <Spinner /> : Icon ? <><Icon />{children}</> : children}
       </LargeButtonContainer>
     );
   } else if (size === "sm") {
     RenderButtonContainer = (
-      <SmallButtonContainer className={iconPosition} bg={bg} color={color} block={block} handleClick={onClick} margin={margin} borderRadius={borderRadius} width={width} outline={outline}>
+      <SmallButtonContainer className={iconPosition} bg={bg} color={color} block={block} handleClick={onClick} margin={margin} borderRadius={borderRadius} width={width} outline={outline} align={align} padding={padding}>
         {isLoading ? action === 'text' ? 'Loading...' : <Spinner /> : Icon ? <><Icon />{children}</> : children}
       </SmallButtonContainer>
     );
