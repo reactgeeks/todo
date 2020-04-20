@@ -1,7 +1,6 @@
 import React from 'react';
 //import { action } from '@storybook/addon-actions';
 import Button, {GroupButton} from '../todo/components/Button';
-import DateTime from '../todo/components/DateTime';
 
 export default {
   title: 'Button',
@@ -34,4 +33,3 @@ export const VerticalGroupButton = () => (
     <Button>Click Me</Button>
   </GroupButton>
   )
-export const DateTimeComponent = () => <DateTime/>;
