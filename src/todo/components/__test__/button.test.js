@@ -23,7 +23,7 @@ describe("Testcases for button", () => {
         });
         wrapper.simulate("click");
         let html = wrapper.html();
-        expect(html.indexOf('svg')).toBe(32);
+        expect(html.indexOf('svg')).toBe(33);
 
         wrapper.setProps({
             handleClick: onclick,
@@ -32,7 +32,7 @@ describe("Testcases for button", () => {
         });
         wrapper.simulate("click");
         html = wrapper.html();
-        expect(html.indexOf('Loading...')).toBe(31);
+        expect(html.indexOf('Loading...')).toBe(32);
     })
 
     test("test icons and there positions", () => {

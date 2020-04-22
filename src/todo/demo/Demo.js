@@ -31,6 +31,8 @@ export default () => {
         setTimeout(() => setLoading3(false), 1000);
     };
 
+    const [date, setDate] = useState(new Date());
+
     return (
         <React.Fragment>
             <h2>Buttons with different sizes</h2>
@@ -114,8 +116,9 @@ export default () => {
                 </GroupButton>
             </Container>
             <h2>DateTime Component</h2>
+            <strong>Selected Date: </strong><span>{String(date)}</span>
             <Container>
-                <DateTime/>
+                <DateTime onSelect={(date) => setDate(date)}/>
             </Container>
         </React.Fragment>
     );

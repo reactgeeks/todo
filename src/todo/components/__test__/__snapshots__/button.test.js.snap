@@ -10,6 +10,10 @@ exports[`Testcases for button test icons and there positions 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  -webkit-box-pack: left;
+  -webkit-justify-content: left;
+  -ms-flex-pack: left;
+  justify-content: left;
   padding: 0.25em 1em;
   font-size: 1em;
   cursor: pointer;
@@ -17,10 +21,6 @@ exports[`Testcases for button test icons and there positions 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: left;
-  -webkit-justify-content: left;
-  -ms-flex-pack: left;
-  justify-content: left;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -54,6 +54,10 @@ exports[`Testcases for button test icons and there positions 1`] = `
   -webkit-flex-direction: column-reverse;
   -ms-flex-direction: column-reverse;
   flex-direction: column-reverse;
+}
+
+.c0 > svg {
+  margin: 0 5px;
 }
 
 <button
@@ -90,6 +94,10 @@ exports[`Testcases for button test icons and there positions 2`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  -webkit-box-pack: left;
+  -webkit-justify-content: left;
+  -ms-flex-pack: left;
+  justify-content: left;
   padding: 0.25em 1em;
   font-size: 1em;
   cursor: pointer;
@@ -97,10 +105,6 @@ exports[`Testcases for button test icons and there positions 2`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: left;
-  -webkit-justify-content: left;
-  -ms-flex-pack: left;
-  justify-content: left;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -134,6 +138,10 @@ exports[`Testcases for button test icons and there positions 2`] = `
   -webkit-flex-direction: column-reverse;
   -ms-flex-direction: column-reverse;
   flex-direction: column-reverse;
+}
+
+.c0 > svg {
+  margin: 0 5px;
 }
 
 <button
@@ -170,6 +178,10 @@ exports[`Testcases for button test icons and there positions 3`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  -webkit-box-pack: left;
+  -webkit-justify-content: left;
+  -ms-flex-pack: left;
+  justify-content: left;
   padding: 0.25em 1em;
   font-size: 1em;
   cursor: pointer;
@@ -177,10 +189,6 @@ exports[`Testcases for button test icons and there positions 3`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: left;
-  -webkit-justify-content: left;
-  -ms-flex-pack: left;
-  justify-content: left;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -214,6 +222,10 @@ exports[`Testcases for button test icons and there positions 3`] = `
   -webkit-flex-direction: column-reverse;
   -ms-flex-direction: column-reverse;
   flex-direction: column-reverse;
+}
+
+.c0 > svg {
+  margin: 0 5px;
 }
 
 <button
@@ -250,6 +262,10 @@ exports[`Testcases for button test icons and there positions 4`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  -webkit-box-pack: left;
+  -webkit-justify-content: left;
+  -ms-flex-pack: left;
+  justify-content: left;
   padding: 0.25em 1em;
   font-size: 1em;
   cursor: pointer;
@@ -257,10 +273,6 @@ exports[`Testcases for button test icons and there positions 4`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: left;
-  -webkit-justify-content: left;
-  -ms-flex-pack: left;
-  justify-content: left;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -294,6 +306,10 @@ exports[`Testcases for button test icons and there positions 4`] = `
   -webkit-flex-direction: column-reverse;
   -ms-flex-direction: column-reverse;
   flex-direction: column-reverse;
+}
+
+.c0 > svg {
+  margin: 0 5px;
 }
 
 <button
